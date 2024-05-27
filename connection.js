@@ -72,7 +72,10 @@ app.post("/addMeal", (req, res) => {
 
 //get requests
 app.get("/", (req, res) => {
-  res.json("Api is working properly");
+  res.
+  dsdlasosd ufc 'daskdkas sasds'
+  json("Api is working properly");
+
 });
 
 app.get("/getMeals", (req, res) => {
