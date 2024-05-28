@@ -70,9 +70,10 @@ describe("Testing the Connection", () => {
 
     const createdOrder = await OrderModel.create(newOrder);
 
-    expect(createdOrder.Name).toBe(newOrder.Name);
-    expect(createdOrder.Price).toBe(newOrder.Price);
-    expect(createdOrder.Mesa).toBe(newOrder.Mesa);
-    expect(createdOrder.Estado).toBe(newOrder.Estado);
+    const retrieveOrder = await OrderModel.findById(createdOrder._id);
+    expect(retrieveOrder.Name).toBe(newOrder.Name);
+    expect(retrieveOrder.Price).toBe(newOrder.Price);
+    expect(retrieveOrder.Mesa).toBe(newOrder.Mesa);
+    expect(retrieveOrder.Estado).toBe(newOrder.Estado);
   }, 10000);
 });
