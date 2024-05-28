@@ -76,4 +76,15 @@ describe("Testing the Connection", () => {
     expect(retrieveOrder.Mesa).toBe(newOrder.Mesa);
     expect(retrieveOrder.Estado).toBe(newOrder.Estado);
   }, 10000);
+
+  it("Shold retrieve all meals", async () => {
+    const getMeals = MealModel.find({});
+
+    expect(getMeals).toBeTruthy();
+  });
+  it("Shold retrieve all orders", async () => {
+    const getOrders = OrderModel.find({});
+
+    expect(getOrders).toBeTruthy();
+  });
 });

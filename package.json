@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "connection.js",
   "scripts": {
+    "start": "nodemon connection.js",
     "test": "vitest connection"
   },
   "repository": {
@@ -27,6 +28,7 @@
     "express": "^4.19.2",
     "fs": "^0.0.1-security",
     "https": "^1.0.0",
-    "mongoose": "^8.4.0"
+    "mongoose": "^8.4.0",
+    "nodemon": "^3.1.1"
   }
 }
