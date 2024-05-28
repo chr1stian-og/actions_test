@@ -1,14 +1,21 @@
-import { describe, it, expect, beforeAll, afterAll, vi } from "vitest";
-import express from "express";
+import {
+  describe,
+  it,
+  expect,
+  beforeAll,
+  afterAll,
+  beforeEach,
+  afterEach,
+} from "vitest";
 import mongoose from "mongoose";
 import supertest from "supertest";
 import MealModel from "./meal";
-import app from "../connection"; // Assuming your express app is exported from this module
+import app from "../connection"; // Ensure your express app is correctly imported
 
 const request = supertest(app);
 
 beforeAll(async () => {
-  mongoose.connect(
+  await mongoose.connect(
     "mongodb+srv://christian2:christian2@beatstore.todsx.mongodb.net/EasyOrder?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
@@ -19,6 +26,14 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await mongoose.connection.close();
+});
+
+beforeEach(async () => {
+  await MealModel.deleteMany({});
+});
+
+afterEach(async () => {
+  await MealModel.deleteMany({});
 });
 
 describe("Testing the Connection", () => {
@@ -35,7 +50,8 @@ describe("Testing the Connection", () => {
     const createdMeal = await MealModel.create(newMeal);
 
     // Retrieve the meal
-    const retrievedMeal = MealModel.findById(createdMeal._id);
+    const retrievedMeal = await MealModel.findById(createdMeal._id);
+
     expect(retrievedMeal.Name).toBe(newMeal.Name);
     expect(retrievedMeal.Description).toBe(newMeal.Description);
     expect(retrievedMeal.Image).toBe(newMeal.Image);
