@@ -10,6 +10,7 @@ import {
 import mongoose from "mongoose";
 import supertest from "supertest";
 import MealModel from "./meal";
+import OrderModel from "./order";
 import app from "../connection"; // Ensure your express app is correctly imported
 
 const request = supertest(app);
@@ -57,5 +58,21 @@ describe("Testing the Connection", () => {
     expect(retrievedMeal.Image).toBe(newMeal.Image);
     expect(retrievedMeal.Price).toBe(newMeal.Price);
     expect(retrievedMeal.Course).toBe(newMeal.Course);
+  }, 10000);
+
+  it("Should set and Retrieve an order", async () => {
+    const newOrder = OrderModel.create({
+      Name: "Pizza",
+      Price: "10.99",
+      Mesa: "1",
+      Estado: "sendo_preparado",
+    });
+
+    const createdOrder = await OrderModel.create(newOrder);
+
+    expect(createdOrder.Name).toBe(newOrder.Name);
+    expect(createdOrder.Price).toBe(newOrder.Price);
+    expect(createdOrder.Mesa).toBe(newOrder.Mesa);
+    expect(createdOrder.Estado).toBe(newOrder.Estado);
   }, 10000);
 });
