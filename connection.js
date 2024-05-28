@@ -73,7 +73,6 @@ app.post("/addMeal", (req, res) => {
 //get requests
 app.get("/", (req, res) => {
   res.json("Api is working properly");
-  
 });
 
 app.get("/getMeals", (req, res) => {
@@ -203,7 +202,7 @@ const PORT = process.env.PORT || 3005;
 app.listen(PORT, () => console.log(`Listenting on port ${PORT}...`));
 
 // const ssl = {
-//   key: fs.readFileSync(
+//   key: fs.readFileSync(``
 //     "/etc/letsencrypt/live/christianmacarthur.com-0004/privkey.pem"
 //   ),
 //   cert: fs.readFileSync(

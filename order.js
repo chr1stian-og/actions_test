@@ -7,4 +7,6 @@ const order = new mongoose.Schema({
   Estado: { type: String, required: false },
 });
 
-module.exports = mongoose.model("order", order);
+// module.exports = mongoose.model("order", order);
+
+module.exports = mongoose.models.Order || mongoose.model('Order', order);

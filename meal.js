@@ -8,4 +8,6 @@ const meal = new mongoose.Schema({
   Course: { type: String, required: false },
 });
 
-module.exports = mongoose.model("meal", meal);
+// module.exports = mongoose.model("meal", meal);
+
+module.exports = mongoose.models.Meal || mongoose.model('Meal', meal);
